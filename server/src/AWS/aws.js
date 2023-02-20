@@ -13,19 +13,20 @@ let uploadFile= async ( file) =>{
 
     var uploadParams= {
         ACL: "public-read",
-        Bucket: "classroom-training-bucket",  //HERE
+        Bucket: "sociout",  //HERE
         Key: "abc/" + file.originalname, //HERE
         Body: file.buffer
     }
-
+   console.log(uploadParams )
     s3.upload( uploadParams, function (err, data ){
         if(err) {
             return reject({"error": err})
+            console.log(err)
         }
+        console.log(data.Location)
         return resolve(data.Location)
     })
    })
 }
-
 
 module.exports={uploadFile};

@@ -13,6 +13,8 @@ const register= async (req,res)=>{
         let uploadedFileURL= await uploadFile(files[0])
         data.profileImage=uploadedFileURL
         console.log(uploadedFileURL)
+        console.log(uploadFile)
+
         const saveData = await user.create(data)
         console.log(saveData)
         res.status(201).json(saveData)
