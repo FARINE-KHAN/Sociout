@@ -1,9 +1,18 @@
 const {user} = require("../models/db")
 //association
+const {uploadFile}= require("../AWS/aws")
 const register= async (req,res)=>{
     try {
+        let files= req.files
         const data = req.body
-        console.log(data)
+    // console.log(files)
+    // if(files.length>0){
+        let validImage=files[0].mimetype.split('/')
+        if(validImage[0]!="image"){
+       return res.status(400).send({ status: false, message: "Please Provide Valid Image.." })}
+        let uploadedFileURL= await uploadFile(files[0])
+        data.profileImage=uploadedFileURL
+        console.log(uploadedFileURL)
         const saveData = await user.create(data)
         console.log(saveData)
         res.status(201).json(saveData)

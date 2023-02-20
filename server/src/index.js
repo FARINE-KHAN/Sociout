@@ -3,6 +3,8 @@ const app = express()
 require("./models/db")
 require("dotenv").config();
 const route =require("./routes")
+const multer = require("multer")
+app.use( multer().any())
 
 
 app.use(express.json())
