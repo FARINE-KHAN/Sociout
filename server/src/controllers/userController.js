@@ -1,4 +1,5 @@
 const { user,post } = require("../models/db");
+const {Op}=require("sequelize")
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { get } = require("../routes");
@@ -231,13 +232,24 @@ const fetchUser = async (req, res) => {
   }
 };
 
-// const fetchAnotherUser = async (req, res) => {
-//   try {
-//     const saveData = await user.findAll(req.body);
-//     res.status(200).json(saveData);
-//   } catch (error) {
-//     res.status(500).json(error.message);
-//   }
-// };
+const fetchAnotherUser = async (req, res) => {
+  try {
+   
+    const saveData = await user.findAll({
+      where:{
+        [Op.or]: [
+        {fullName :{ [Op.substring]:req.body.name }},
+        {userName:{  [Op.startsWith]:req.body.name }}
+        ]
+      }
+    });
+  if(saveData.length==0){
+    return res.status(404).json("no result found")
+  }
+    res.status(200).json(saveData);
+  } catch (error) {
+    res.status(500).json(error.message);  
+  }
+};
 
-module.exports = { register, login, logout, editUser, deleteUser, fetchUser/*, fetchAnotherUser*/ };
+module.exports = { register, login, logout, editUser, deleteUser, fetchUser, fetchAnotherUser};

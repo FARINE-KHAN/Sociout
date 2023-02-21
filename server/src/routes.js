@@ -11,7 +11,7 @@ router.post("/user/logout", userC.logout);
 router.put("/edit/:id",userC.editUser)
 router.delete("/delete/:id",userC.deleteUser)
 router.get("/fetch/:id",userC.fetchUser)
-// router.get("/fetch",userC.fetchAnotherUser)
+router.get("/fetch",userC.fetchAnotherUser)
 /////////post apis/////////////////////
 router.post("/postcreate/:id",postC.createPost)
 router.put("/editpost/:id",postC.editPost)
