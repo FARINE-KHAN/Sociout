@@ -3,6 +3,8 @@ const router = express.Router()
 
 const userC=require("./controllers/userController")
 const postC=require("./controllers/postController")
+// const { comment } = require("./models/db")
+const createcomment = require("./controllers/comment")
 
 ////////////user apis///////////////////
 router.post("/register",userC.register)
@@ -16,5 +18,9 @@ router.get("/fetch/:id",userC.fetchUser)
 router.post("/postcreate/:id",postC.createPost)
 router.put("/editpost/:id",postC.editPost)
 router.delete("/removepost/:id",postC.removePost)
+
+router.post("/comment/:id",createcomment.comments)
+router.get("/postComments/:id",postC.getPosts)
+router.delete("/deleteComment/:id/:userId/:postId",createcomment.deleteComment)
 
 module.exports=router
