@@ -1,6 +1,6 @@
 module.exports=(sequelize,DataTypes)=>{
 
-    const User = sequelize.define('User', {
+    const user = sequelize.define('user', {
       // Model attributes are defined here
       profileImage:{
         type: DataTypes.STRING,
@@ -24,9 +24,9 @@ module.exports=(sequelize,DataTypes)=>{
       }
     }, {
       // Other model options go here
-      tableName: 'users',
+      // tableName: 'users',
     
     });
 
-    return User;
+    return user;
     }

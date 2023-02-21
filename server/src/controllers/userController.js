@@ -1,4 +1,4 @@
-const { user } = require("../models/db");
+const { user,post } = require("../models/db");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const { get } = require("../routes");
@@ -214,20 +214,30 @@ const deleteUser = async (req, res) => {
 
 const fetchUser = async (req, res) => {
   try {
-    const saveData = await user.findOne(req.body);
+    const saveData = await user.findOne({
+      where:{
+        id:req.params.id
+      },
+      include:[{
+        model:post
+      }]
+    });
+  //  let countpost = 
+  //  console.log(await user.countPosts())
+
     res.status(200).json(saveData);
   } catch (error) {
     res.status(500).json(error.message);
   }
 };
 
-const fetchAnotherUser = async (req, res) => {
-  try {
-    const saveData = await user.findAll(req.body);
-    res.status(200).json(saveData);
-  } catch (error) {
-    res.status(500).json(error.message);
-  }
-};
+// const fetchAnotherUser = async (req, res) => {
+//   try {
+//     const saveData = await user.findAll(req.body);
+//     res.status(200).json(saveData);
+//   } catch (error) {
+//     res.status(500).json(error.message);
+//   }
+// };
 
-module.exports = { register, login, logout, editUser, deleteUser, fetchUser, fetchAnotherUser };
+module.exports = { register, login, logout, editUser, deleteUser, fetchUser/*, fetchAnotherUser*/ };
