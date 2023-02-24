@@ -18,6 +18,8 @@ db.sequelize = sequelize;
 db.user = require("./userModel")(sequelize, DataTypes);
 db.post = require("./postModel")(sequelize, DataTypes);
 db.comment = require("./commentModel")(sequelize, DataTypes);
+db.like = require("./likeModel")(sequelize, DataTypes);
+
 //USER CAN POST MANY POSTS
 db.user.hasMany(db.post,{onDelete:"CASCADE"});
 db.post.belongsTo(db.user,{onDelete:"CASCADE"});

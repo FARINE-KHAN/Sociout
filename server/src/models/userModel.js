@@ -28,9 +28,6 @@ module.exports=(sequelize,DataTypes)=>{
         allowNull :false
       }
     }, {
-      // Other model options go here
-      // tableName: 'users',
-    
     });
 
     return user;

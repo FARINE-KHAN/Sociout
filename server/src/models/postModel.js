@@ -8,9 +8,9 @@ module.exports=(sequelize,DataTypes)=>{
       caption: {
         type: DataTypes.STRING
       },
-      // userId: {
-      //   type: DataTypes.INTEGER
-      // }
+      likes: {
+        type: DataTypes.INTEGER
+      }
     },{
       // Other model options go here
     //   tableName: 'users',
