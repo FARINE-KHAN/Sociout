@@ -2,7 +2,7 @@ const { user,post } = require("../models/db");
 const {Op}=require("sequelize")
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
-const { get } = require("../routes");
+const Emailregx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 //association
 // const { uploadFile } = require("../AWS/aws");
 
@@ -11,7 +11,7 @@ const register = async (req, res) => {
   try {
     let files = req.files;
     const data = req.body;
-    const { profileImage, fullName, email, phone, password, confirmPassword } = data;
+    const { profileImage,userName, fullName, email, phone, password, confirmPassword } = data;
 
 
     //==========to upload files into AWS S3==============
@@ -31,7 +31,7 @@ const register = async (req, res) => {
     //========= email validation ==========
     if(!email) return res.status(400).json("Please provide email")
     
-    const Emailregx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+ 
     let Email = Emailregx.test(email);
     if (!Email) {
         return res.status(400).json("Please enter valid email.");
@@ -42,7 +42,11 @@ const register = async (req, res) => {
     if (dublicateEmail) {
       return res.status(400).json(" Email Already Exists");
     }
-    
+      //========= Checking for duplicate username  ===========
+    const dublicateUsername = await user.findOne({ where: { userName : userName } });
+    if (dublicateUsername) {
+      return res.status(400).json(" username is not available");
+    }
     //========= phone validation ==========
     if(!phone) return res.status(400).json("Please provide phone number")
     
@@ -93,15 +97,17 @@ const login = async (req, res) => {
         let {body, password} = data
 
         // body can be either email or a phone number
-        if(!body) return res.status(400).json("Please enter email or phone")
+        if(!body) return res.status(400).json("Please enter email or phone or username")
 
         let obj = {}
         
         if (!isNaN(body)) {
             obj.phone=body
         }
-        else{
+        else if(Emailregx.test(email)){
             obj.email = body
+        }else{
+          obj.userName=body
         }
         if(!password) return res.status(400).json("Please enter password");
         
