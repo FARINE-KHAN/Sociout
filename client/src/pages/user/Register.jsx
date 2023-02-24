@@ -23,7 +23,7 @@ function Register() {
   }
 
   const handleSubmit = async (event) => {
-    event.preventDefault()
+     event.preventDefault()
     if (handleValidation()) {
       const { password, confirmPassword, username, email } = values
       const { data } = await axios.post()

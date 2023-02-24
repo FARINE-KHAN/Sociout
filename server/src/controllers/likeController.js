@@ -1,5 +1,4 @@
-const {like, user}=require("../models/db")
-
+const {like, post,user}=require("../models/db")
 
 const createLikes =async(req,res)=>{
     try {
@@ -8,7 +7,7 @@ const createLikes =async(req,res)=>{
         req.body.postId=req.params.postId
         let findUser= await user.findByPk(req.params.userid)
         req.body.likeBy=findUser.userName
-        // console.log(findUser)
+        await post.increment({likess: 1}, { where: { id:req.params.postId  } })
         let savedata = await like.create(data)
         return res.status(201).json(savedata)
     } catch (error) {
