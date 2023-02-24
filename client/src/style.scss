@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+
+$green : rgb(0, 255, 191);
+$dark :  #081d1f;
+
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+.btn-primery{
+    button{
+        padding: 0.8rem;
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+        border: none;
+        font-size: larger;
+        font-weight: bold;
+        background-color: $green;
+        border-radius: 1rem;
+        cursor: pointer;
+        
+        &:hover{
+            padding-left: 3.1rem;
+            padding-right: 3.1rem;
+            transition: 0.3s;
+            background-color: $dark;
+            color: white;
+        }
+    }
+}
+
+.app{
+    .navbar{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $green;
+        padding: 1rem;
+
+        .logo{
+            i{
+                font-size: 2rem;
+                margin-left: 3rem;
+            }
+        }
+
+        .links{
+            display: flex;
+            align-items: center;
+            text-align: center;
+            gap: 2rem;
+
+            h3{
+                color: black;
+
+                &:hover{
+                    border-bottom: 0.2rem solid $dark;
+                    border-right: 0.2rem solid $dark;
+                    transition: 0.2s;
+                }
+            }
+        }
+    }
+
+    .footer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        p{
+            color: gray;
+            font-size: 0.7rem;
+        }
+        a{
+            text-decoration: none;
+        }
+    }
+
+    .error-page{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+
+        img{
+            height: 70vh;
+            width: 100%;
+        }
+
+        button{
+            margin-bottom: 3rem;
+        }
+    }
+
+    .home{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        margin: 13rem;
+        gap: 2rem;
+
+        h1{
+            font-size: 4rem;
+            word-spacing: 1rem;
+            letter-spacing: 0.8rem;
+            span{
+                color: $green;
+            }
+        }
+
+        p{
+            font-size: 2rem;
+            letter-spacing: 0.1rem;
+        }
+
+    }
+}
