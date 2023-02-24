@@ -1,6 +1,6 @@
 module.exports = (sequelize, DataTypes) => {
   const like = sequelize.define("like", {
-    like: DataTypes.INTEGER,
+    like: DataTypes.BOOLEAN,
     likeBy: DataTypes.STRING,
   });
   return like;

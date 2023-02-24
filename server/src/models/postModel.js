@@ -8,7 +8,7 @@ module.exports=(sequelize,DataTypes)=>{
       caption: {
         type: DataTypes.STRING
       },
-      likes: {
+      likess: {
         type: DataTypes.INTEGER
       }
     },{

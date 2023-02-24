@@ -3,8 +3,10 @@ const router = express.Router()
 
 const userC=require("./controllers/userController")
 const postC=require("./controllers/postController")
-// const { comment } = require("./models/db")
+const likeC=require("./controllers/likeController")
 const createcomment = require("./controllers/comment")
+
+// const { comment } = require("./models/db")
 
 ////////////user apis///////////////////
 router.post("/register",userC.register)
@@ -22,5 +24,9 @@ router.delete("/removepost/:id",postC.removePost)
 router.post("/comment/:id",createcomment.comments)
 router.get("/postComments/:id",postC.getPosts)
 router.delete("/deleteComment/:id/:userId/:postId",createcomment.deleteComment)
+
+router.post("/createlikes/:userid/:postId",likeC.createLikes)
+
+
 
 module.exports=router

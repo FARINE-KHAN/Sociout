@@ -28,7 +28,7 @@ db.comment.belongsTo(db.user,{onDelete:"CASCADE"});
 db.post.hasMany(db.comment,{onDelete:"CASCADE"});
 db.comment.belongsTo(db.post,{onDelete:"CASCADE"});
 
-db.post.hasOne(db.like,{onDelete:"CASCADE"});
+db.post.hasMany(db.like,{onDelete:"CASCADE"});
 db.like.belongsTo(db.post,{onDelete:"CASCADE"});
 
 db.user.hasMany(db.like,{onDelete:"CASCADE"});
