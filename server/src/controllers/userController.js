@@ -9,26 +9,26 @@ const Emailregx = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
 const register = async (req, res) => {
   try {
-    let files = req.files;
+//     let files = req.files;
     const data = req.body;
     const { profileImage,userName, fullName, email, phone, password, confirmPassword } = data;
 
 
-    //==========to upload files into AWS S3==============
-    const cloudinary = require('cloudinary').v2;
+//     //==========to upload files into AWS S3==============
+//     const cloudinary = require('cloudinary').v2;
 
 
 // Configuration 
-cloudinary.config({
-  cloud_name: "dkisfn7aj",
-  api_key: "156122554783979",
-  api_secret: "ENc6KebLIQklRolL-JqpiitRuUs"
-});
+// cloudinary.config({
+//   cloud_name: "dkisfn7aj",
+//   api_key: "156122554783979",
+//   api_secret: "ENc6KebLIQklRolL-JqpiitRuUs"
+// });
 
 
-// Upload
-console.log(files[0].originalname)
-const res = await cloudinary.uploader.upload(files[0].originalname, { folder: "sociout"})
+// // Upload
+// console.log(files[0].originalname)
+// const res = await cloudinary.uploader.upload(files[0].originalname, { folder: "sociout"})
 
 
 
@@ -42,7 +42,7 @@ const res = await cloudinary.uploader.upload(files[0].originalname, { folder: "s
 
 
 // The output url
-console.log(res.public_id);
+// console.log(res.public_id);
 
     //======= Name validation =======
     if(!fullName) return res.status(400).json("Please provide Full Name")
@@ -125,7 +125,7 @@ const login = async (req, res) => {
         if (!isNaN(body)) {
             obj.phone=body
         }
-        else if(Emailregx.test(email)){
+        else if(Emailregx.test(body)){
             obj.email = body
         }else{
           obj.userName=body
@@ -147,10 +147,11 @@ const login = async (req, res) => {
             "shhhhhh",
         { expiresIn: "1h" }
         );
+        let User = getUser
         res.cookie("access_token", token, 
       {
         httpOnly: true,
-      }).status(200).json({getUser, token});
+      }).status(200).json({User, token});
     } catch (error) {
         res.status(500).json(error.message);
     }
