@@ -1,3 +1,4 @@
+const cors = require("cors")
 const express= require("express")
 const app = express()
 require("./models/db")
@@ -10,6 +11,7 @@ app.use( multer().any())
 
 app.use(express.json())
 app.use(cookieParser())
+app.use(cors())
 app.use("/",route)
 
 

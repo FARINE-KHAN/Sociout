@@ -15,21 +15,43 @@ const register = async (req, res) => {
 
 
     //==========to upload files into AWS S3==============
-    // let validImage = files[0].mimetype.split("/");
-    // if (validImage[0] != "image") {
-    //   return res
-    //     .status(400)
-    //     .send({ status: false, message: "Please Provide Valid Image.." });
-    // }
-    // let uploadedFileURL = await uploadFile(files[0]);
-    // data.profileImage = uploadedFileURL;
+    const cloudinary = require('cloudinary').v2;
+
+
+// Configuration 
+cloudinary.config({
+  cloud_name: "dkisfn7aj",
+  api_key: "156122554783979",
+  api_secret: "ENc6KebLIQklRolL-JqpiitRuUs"
+});
+
+
+// Upload
+console.log(files[0].originalname)
+const res = await cloudinary.uploader.upload(files[0].originalname, { folder: "sociout"})
+
+
+
+// Generate 
+// const url = cloudinary.url("olympic_flag", {
+//   width: 100,
+//   height: 150,
+//   Crop: 'fill'
+// });
+
+
+
+// The output url
+console.log(res.public_id);
 
     //======= Name validation =======
     if(!fullName) return res.status(400).json("Please provide Full Name")
     if((/^[0-9]/).test(fullName)) return res.status(400).json("Please provide valid Name")
     
+    if(!userName) return res.status(400).json("Please provide userName")
     //========= email validation ==========
     if(!email) return res.status(400).json("Please provide email")
+
     
  
     let Email = Emailregx.test(email);
@@ -95,7 +117,6 @@ const login = async (req, res) => {
     try {
         let data = req.body
         let {body, password} = data
-
         // body can be either email or a phone number
         if(!body) return res.status(400).json("Please enter email or phone or username")
 

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { ToastContainer, toast } from "react-toastify"
 import 'react-toastify/dist/ReactToastify.css';
 import axios from "axios"
@@ -7,7 +7,7 @@ import axios from "axios"
 function Register() {
   const [values, setValues] = useState({
     fullName: "",
-    username: "",
+    userName: "",
     email: "",
     phone: "",
     password: "",
@@ -21,13 +21,16 @@ function Register() {
     draggable: true,
     theme: "dark"
   }
-
+  const navigate = useNavigate()
   const handleSubmit = async (event) => {
      event.preventDefault()
-    if (handleValidation()) {
-      const { password, confirmPassword, username, email } = values
-      const { data } = await axios.post()
+      try{await axios.post("http://localhost:9000/register",values);
+      navigate("/login")
     }
+      catch(err){
+     toast.error(err.response.data,toastOptions)
+      }
+    
   }
 
 
@@ -39,7 +42,7 @@ function Register() {
     <div>
       
       <div className='form'>
-        <form action="" onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>
 
           <div className="heading">
 
@@ -53,7 +56,7 @@ function Register() {
 
           <input type="text"
             placeholder='username'
-            name='username'
+            name='userName'
             onChange={handleChange} />
 
           <input type="email"
