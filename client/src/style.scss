@@ -119,4 +119,41 @@ $dark :  #081d1f;
         }
 
     }
+
+    .form{
+        display: flex;
+        justify-content: space-around;
+        background-color: rgb(240, 240, 240);
+        margin: 3rem;
+        border-radius: 2rem;
+        .form-svg{
+            height: 30vh;
+            width: 30vw;
+        }
+
+        .form-main{
+            form{
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin: 2rem;
+                gap: 1rem;
+
+                input{
+                    height: 2.5rem;
+                    width: 20rem;
+                    border: none;
+                    border-radius: 0.5rem;
+                    padding: 1rem;
+                    font-size: large;
+
+                    &:focus{
+                        outline: none;
+                    }
+                }
+            }
+        }
+
+    }
 }

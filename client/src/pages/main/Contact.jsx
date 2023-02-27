@@ -1,9 +1,10 @@
 import React from 'react'
+import Maintenance from '../../components/Maintenance'
 
 const Contact = () => {
   return (
     <div>
-      contact us
+      <Maintenance/>
     </div>
   )
 }

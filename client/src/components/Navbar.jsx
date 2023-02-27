@@ -1,7 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link } from 'react-router-dom'
+import { AuthContext } from "../Context/AuthContext";
 
 const Navbar = () => {
+  const { currentUser, logout } = useContext(AuthContext);
+
   return (
     <div className='navbar'>
       <div className='logo'>
@@ -19,23 +22,17 @@ const Navbar = () => {
             <Link className="link" to="/contact" style={{textDecoration : "none"}}>
               <h3>Contact Us</h3>
             </Link>
-            <Link className="link" to="/user/profile/:id" style={{textDecoration : "none"}}>
-              <h3>Muhaz</h3>
-            </Link>
-            <Link className="link" to="/login" style={{textDecoration : "none"}}>
-              <h3>Logout</h3>
-            </Link>
 
-            {/* <Link to="/user/update" style={{"textDecoration" : "none"}}>
-            <span>{currentUser?.User.username}</span></Link>
+            <Link to="/user/profile/:id" style={{"textDecoration" : "none"}}>
+            <h3>{currentUser?.User.userName}</h3></Link>
             {currentUser ? (
               <Link to="/login" style={{"textDecoration" : "none"}}>
-            <span onClick={logout}>Logout</span></Link>
+            <h3 onClick={logout}>Logout</h3></Link>
           ) : (
-            <Link className="link" to="/login">
-              Login
+            <Link className="link" to="/login" style={{"textDecoration" : "none"}}>
+              <h3>Login</h3>
             </Link>
-          )} */}
+          )}
         </div>
     </div>
   )

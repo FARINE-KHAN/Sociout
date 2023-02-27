@@ -1,9 +1,10 @@
 import React from 'react'
+import Maintenance from '../../components/Maintenance'
 
 const About = () => {
   return (
     <div>
-      about page
+      <Maintenance/>
     </div>
   )
 }

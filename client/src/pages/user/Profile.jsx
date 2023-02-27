@@ -1,9 +1,10 @@
 import React from 'react'
+import Maintenance from '../../components/Maintenance'
 
 const Profile = () => {
   return (
     <div>
-      User profile page
+      <Maintenance/>
     </div>
   )
 }
