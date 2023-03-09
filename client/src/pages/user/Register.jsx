@@ -42,12 +42,12 @@ function Register() {
   return (
     <>
     <Navbar/>
-      <div className="form">
-        <div className="form-svg">
+      <div className="form"  data-aos="zoom-out">
+        <div className="form-svg"  data-aos="zoom-in">
           <img src={svg} alt="svg" />
         </div>
         <div className="form-main">
-          <form onSubmit={handleSubmit}>
+          <form onSubmit={handleSubmit} data-aos="slide-left">
               <h1>REGISTER</h1>
               <input
                 type="text"
@@ -98,8 +98,8 @@ function Register() {
             </span>
           </form>
         </div>
-        <ToastContainer/>
       </div>
+        <ToastContainer/>
       <Footer/>
     </>
   );

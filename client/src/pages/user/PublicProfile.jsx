@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import Sidebar from "../../components/Sidebar";
 import SuggestFriends from "../../components/SuggestFriends";
 
-const Profile = () => {
+const PublicProfile = () => {
   return (
     <div>
       <div className="profile">
@@ -23,13 +23,21 @@ const Profile = () => {
               src="https://qph.cf2.quoracdn.net/main-qimg-a8cafcc4acb60054c65bd209e7f5cc79.webp"
               alt="img"
             />
-            <Link
-              to="/user/editprofile/:id"
+            <div className="profile-btns">
+            <div
+              to="/user/editprofile/:id/:userName"
               className="btn-secondary"
               style={{ marginLeft: "15rem" }}
             >
-              <button>Edit Profile</button>
-            </Link>
+              <button>Add Friend</button>
+            </div>
+            <div
+              to="/user/editprofile/:id/:userName"
+              className="btn-thrd"
+            >
+              <button>Message</button>
+            </div>
+            </div>
           </div>
           <div className="profile-name">
             <h3>Someone FullName</h3>
@@ -70,4 +78,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default PublicProfile

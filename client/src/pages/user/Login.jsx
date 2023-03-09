@@ -38,12 +38,12 @@ const Login = () => {
   return (
     <>
     <Navbar/>
-      <div className="form" style={{height : "33rem"}}>
-        <div className="form-svg">
+      <div className="form" style={{height : "33rem"}} data-aos="zoom-in">
+        <div className="form-svg" data-aos="zoom-out">
           <img src={svg} alt="svg" />
         </div>
         <div className="form-main" style={{margin : "7rem"}}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} data-aos="slide-right">
       <h1>LOGIN</h1>
         <input
           placeholder="Enter email or phone or username"
@@ -66,10 +66,10 @@ const Login = () => {
           </Link>
         </p>
 
-        <ToastContainer />
       </form>
       </div>
     </div>
+        <ToastContainer />
     <Footer/>
     </>
   );

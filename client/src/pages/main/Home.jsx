@@ -1,35 +1,34 @@
-import React, { useContext } from 'react'
-import Navbar from '../../components/Navbar'
-import Footer from '../../components/Footer'
+import React, { useContext } from "react";
+import Navbar from "../../components/Navbar";
+import Footer from "../../components/Footer";
 import { AuthContext } from "../../Context/AuthContext";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const { currentUser } = useContext(AuthContext);
   return (
     <div>
-    <Navbar/>
-      <div className='home'>
-        <h1>Welcome to <span>Sociout</span> </h1>
+      <Navbar />
+      <div className="home" data-aos="zoom-in">
+        <h1>
+          Welcome to <span>Sociout</span>{" "}
+        </h1>
         <p>Be Imagine, Be Artistic And Let’s Engage.</p>
         <div className="btn-primery">
-        {currentUser ? (
-        <Link 
-          to="/user/dashboard"
-          style={{ textDecoration: "none" }}
-        >
-          <button >Dashboard</button>
-        </Link>
-      ) : (
-        <Link  to="/login">
-          <button >Login</button>
-        </Link>
-      )}
+          {currentUser ? (
+            <Link to="/user/dashboard" style={{ textDecoration: "none" }}>
+              <button>Dashboard</button>
+            </Link>
+          ) : (
+            <Link to="/login">
+              <button>Login</button>
+            </Link>
+          )}
+        </div>
       </div>
-      </div>
-      <Footer/>
+      <Footer />
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

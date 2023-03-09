@@ -1,6 +1,6 @@
 const { Sequelize, DataTypes } = require("sequelize");
 require("dotenv").config();
-const sequelize = new Sequelize(process.env.DB, process.env.ROOT, process.env.PASSWORD, {
+const sequelize = new Sequelize("sociout", "muhazAhmed", "muhaz-DB", {
   host: "localhost",
   logging: false,
   dialect: "mysql",
@@ -34,6 +34,6 @@ db.like.belongsTo(db.post,{onDelete:"CASCADE"});
 db.user.hasMany(db.like,{onDelete:"CASCADE"});
 db.like.belongsTo(db.user,{onDelete:"CASCADE"});
 
-db.sequelize.sync({ force: true });
+db.sequelize.sync({ force: false });
 
 module.exports = db;

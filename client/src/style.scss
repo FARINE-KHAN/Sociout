@@ -1,17 +1,18 @@
-@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
 
-$green : rgb(0, 255, 191);
-$dark :  #081d1f;
+$green: rgb(0, 255, 191);
+$dark: #081d1f;
+$light: rgb(240, 240, 240);
 
-*{
+* {
     padding: 0%;
     margin: 0%;
     box-sizing: border-box;
-    font-family: 'Josefin Sans', sans-serif;
+    font-family: "Josefin Sans", sans-serif;
 }
 
-.btn-primery{
-    button{
+.btn-primery {
+    button {
         padding: 0.8rem;
         padding-left: 2.5rem;
         padding-right: 2.5rem;
@@ -21,8 +22,8 @@ $dark :  #081d1f;
         background-color: $green;
         border-radius: 1rem;
         cursor: pointer;
-        
-        &:hover{
+
+        &:hover {
             padding-left: 3.1rem;
             padding-right: 3.1rem;
             transition: 0.3s;
@@ -32,31 +33,67 @@ $dark :  #081d1f;
     }
 }
 
-.app{
-    .navbar{
+.btn-secondary {
+    button {
+        // margin-left: 20rem;
+        border: none;
+        background-color: $green;
+        width: 10rem;
+        font-weight: bold;
+        padding: 0.8rem;
+        border-radius: 2rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: $dark;
+            color: white;
+            transition: 0.3s;
+        }
+    }
+}
+.btn-thrd {
+    button {
+        background-color: #081d1f;
+        color: white;
+        height: 5vh;
+        width: 7vw;
+        border-radius: 2rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: white;
+            color: black;
+            border: 0.1rem solid $green;
+            transition: 0.3s;
+        }
+    }
+}
+
+.app {
+    .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
         background-color: $green;
         padding: 1rem;
 
-        .logo{
-            i{
+        .logo {
+            i {
                 font-size: 2rem;
                 margin-left: 3rem;
             }
         }
 
-        .links{
+        .links {
             display: flex;
             align-items: center;
             text-align: center;
             gap: 2rem;
 
-            h3{
+            h3 {
                 color: black;
 
-                &:hover{
+                &:hover {
                     border-bottom: 0.2rem solid $dark;
                     border-right: 0.2rem solid $dark;
                     transition: 0.2s;
@@ -65,20 +102,23 @@ $dark :  #081d1f;
         }
     }
 
-    .footer{
+    .footer {
         display: flex;
         justify-content: center;
         align-items: center;
-        p{
+        p {
             color: gray;
             font-size: 0.7rem;
         }
-        a{
+        a {
             text-decoration: none;
+            &:hover {
+                font-size: 0.8rem;
+            }
         }
     }
 
-    .error-page{
+    .error-page {
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -86,17 +126,17 @@ $dark :  #081d1f;
         height: 100%;
         width: 100%;
 
-        img{
+        img {
             height: 70vh;
             width: 100%;
         }
 
-        button{
+        button {
             margin-bottom: 3rem;
         }
     }
 
-    .home{
+    .home {
         display: flex;
         justify-content: center;
         flex-direction: column;
@@ -104,35 +144,34 @@ $dark :  #081d1f;
         margin: 13rem;
         gap: 2rem;
 
-        h1{
+        h1 {
             font-size: 4rem;
             word-spacing: 1rem;
             letter-spacing: 0.8rem;
-            span{
+            span {
                 color: $green;
             }
         }
 
-        p{
+        p {
             font-size: 2rem;
             letter-spacing: 0.1rem;
         }
-
     }
 
-    .form{
+    .form {
         display: flex;
         justify-content: space-around;
-        background-color: rgb(240, 240, 240);
+        background-color: $light;
         margin: 3rem;
         border-radius: 2rem;
-        .form-svg{
+        .form-svg {
             height: 30vh;
             width: 30vw;
         }
 
-        .form-main{
-            form{
+        .form-main {
+            form {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -140,7 +179,7 @@ $dark :  #081d1f;
                 margin: 2rem;
                 gap: 1rem;
 
-                input{
+                input {
                     height: 2.5rem;
                     width: 20rem;
                     border: none;
@@ -148,12 +187,217 @@ $dark :  #081d1f;
                     padding: 1rem;
                     font-size: large;
 
-                    &:focus{
+                    &:focus {
                         outline: none;
                     }
                 }
             }
         }
+    }
 
+    .profile {
+        padding: 2rem;
+        display: flex;
+        justify-content: space-between;
+        gap: 2rem;
+
+        .naviagate {
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+
+            button {
+                border: none;
+                background-color: white;
+                cursor: pointer;
+            }
+
+            i {
+                font-size: 1.5rem;
+            }
+        }
+
+        .img {
+            img {
+                height: 19vh;
+                width: 10vw;
+                border-radius: 50%;
+            }
+
+            .profile-btns {
+                display: flex;
+                justify-content: space-around;
+
+                .btn-thrd {
+                    button {
+                        background-color: white;
+                        color: black;
+                        border: 0.1rem solid $green;
+                        font-weight: bold;
+
+                        &:hover {
+                            background-color: #081d1f;
+                            color: white;
+                            border: none;
+                        }
+                    }
+                }
+            }
+        }
+
+        .profile-name {
+            margin-top: 2rem;
+            h3 {
+                font-size: large;
+            }
+            h4 {
+                color: gray;
+            }
+        }
+
+        .profile-bio {
+            margin-top: 2rem;
+            h4 {
+                font-size: medium;
+                font-weight: 500;
+            }
+        }
+
+        .profile-list {
+            margin-top: 2rem;
+            display: flex;
+            gap: 5rem;
+            h3 {
+                color: rgb(105, 105, 105);
+                &:hover {
+                    border-bottom: 0.1rem solid $dark;
+                }
+            }
+            span {
+                font-weight: bolder;
+                color: black;
+            }
+        }
+
+        .profile-posts {
+            border-top: 0.1rem solid rgb(236, 236, 236);
+            margin-top: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            position: absolute;
+            margin-right: 2rem;
+
+            img {
+                height: 50vh;
+                flex: 0 0 315px;
+                padding: 2rem;
+                margin-bottom: 0.5rem;
+                border-radius: 3rem;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .sidebar {
+        background-color: $light;
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        gap: 3rem;
+        height: 70vh;
+        padding: 1rem;
+        border-radius: 1rem;
+
+        .logo {
+            i {
+                font-size: 2rem;
+                margin-right: 8rem;
+                color: $green;
+            }
+            h2 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .tools {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+
+            h3 {
+                cursor: pointer;
+                &:hover {
+                    border-left: 0.3rem solid $green;
+                    border-right: 0.3rem solid $green;
+                    border-radius: 0.5rem;
+                    transition: 0.3s;
+                }
+
+                i {
+                    font-size: 1.5rem;
+                    margin-right: 1rem;
+                }
+            }
+            button {
+                i {
+                    margin-right: 1rem;
+                }
+            }
+        }
+    }
+
+    .suggest {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        background-color: $light;
+        border-radius: 1rem;
+        padding: 1rem;
+        background-color: #d1f4fa;
+
+        .suggest-main {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+
+            .sgst-img {
+                img {
+                    height: 6.5vh;
+                    width: 3vw;
+                    border-radius: 50%;
+                }
+            }
+            .names {
+                h3 {
+                    font-size: medium;
+                    width: 10vw;
+                }
+                h4 {
+                    color: gray;
+                    font-size: small;
+                }
+            }
+        }
+    }
+
+    .settings {
+        padding: 2rem;
+        display: flex;
+        gap: 2rem;
+
+        .naviagate {
+            button {
+                border: none;
+                background-color: white;
+                cursor: pointer;
+            }
+        }
+
+        .settings-main {
+            h1 {
+                font-size: 3rem;
+            }
+        }
     }
 }
